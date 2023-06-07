@@ -1,0 +1,47 @@
+<div class="lib">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <h1 class="text-center text-white mt-5">Connexion</h1>
+            <!--<div class="text-center mb-5 text-dark"><img height="40px"  width="120px" src="./assets/img/valueIt-removebg-preview.png"></div>
+            --><div class="card my-5">
+    
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="card-body cardbody-color p-lg-5">
+    
+                <div class="text-center">
+                  <img src="/assets/ImgV/PngItem_1051661.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                    width="200px" alt="profile">
+                </div>
+    
+                <div class="mb-3">
+                  <input formControlName="userName" type="text" class="form-control" id="Username" aria-describedby="emailHelp"
+                    placeholder="Matricule">
+                    <div class="alert alert-danger" *ngIf="loginForm.get('userName').invalid 
+                    && loginForm.get('userName').touched">
+                    <div *ngIf="loginForm.get('userName').errors.required">
+                      Ajouter matricule 
+                    </div>
+                  </div> 
+                </div>
+             
+                <div class="mb-3">
+                  <input  formControlName="password" type="password" class="form-control" id="password" placeholder="Mot de passe ">
+                  <div class="alert alert-danger" *ngIf="loginForm.get('password').invalid 
+                  && loginForm.get('password').touched">
+                  <div *ngIf="loginForm.get('password').errors.required">
+                   Ajouter votre mot de passe 
+                  </div>
+                </div>  
+                </div>
+                <div class="text-center"><button [disabled]="loginForm.invalid" type="submit" class="btn btn-color px-5 mb-5 w-100">se connecter</button></div>
+                <div id="emailHelp" class="form-text text-center mb-5 text-dark"><div class="alert alert-warning" *ngIf="submitted && isLoginFailed">
+                  Connexion échoué- {{ errorMessage }}
+                </div>
+                </div>
+              </form>
+            </div>
+    
+          </div>
+        </div>
+      </div>
+      </div>

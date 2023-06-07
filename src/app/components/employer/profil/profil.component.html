@@ -1,0 +1,232 @@
+
+    <div class="container emp-profile ">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img src="{{Employers.image}}" alt="" id="profile-image-pic" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"/>
+                        <div class="file btn btn-lg btn-primary">
+                           <a >Photo de profil</a> 
+                            <input type="button"data-toggle="modal" data-target="#exampleModalCenter" name="file" type="" name="file"/>
+
+                        </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="vueprofil">
+            <img src="{{Employers.image}}"/>
+            </div>
+        </div>
+      </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                                <h5>
+                                    {{Employers.nom}} {{Employers.prenom}}
+                                </h5>
+                                <h6>
+                                   Fonction: {{Employers.fonction}}
+                                </h6>
+                                <h6>
+                                    Matricule: {{Employers.matricule}}
+                                 </h6>
+                        <p class="proile-rating">Horaire: <span>{{Employers.horaire}}</span></p>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">à propos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">information</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div *ngIf="showuserOnlyBoard" class="col-md-2">
+                    <a type="button"  data-toggle="modal"   data-target=".bd-example-modal-lg">
+                        Modifier profile
+                    </a>
+                      
+                      <!-- Modal -->
+                      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div  class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Modifier profil</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="card-body">
+                              <form [formGroup]="this.EmployerForm" (ngSubmit)="onSubmit()" >
+                                <div class="row">
+                                <div class="col-md-4">
+                                  <div class="profile-img">
+                                    <img src='{{Employers.image}}' *ngIf="!imgURL" alt=""/>
+                                      <img [src]="imgURL" height="200" *ngIf="imgURL" alt=""/>
+                                      <div class="file btn btn-lg btn-primary">
+                                          Change Photo
+                                          <input type="file" name="file" accept="image/*" (change)="onSelectFile($event)"/>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="inputAddress">Nom</label>
+                                  <input type="text" class="form-control"  [(ngModel)]="Employers.nom" formControlName="nom" id="nom" placeholder="Nom">
+                                </div>
+                                <div class="form-group">
+                                  <label for="inputAddress2">Prénom</label>
+                                  <input type="text" class="form-control"  [(ngModel)]="Employers.prenom" formControlName="prenom" id="prenom" placeholder="Prénom">
+                                </div>
+                                
+                               </div>
+                              </div>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Skype</label>
+                                    <input type="email"[(ngModel)]="Employers.skype" class="form-control"formControlName="skype" id="skype" placeholder="Skype">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Email</label>
+                                    <input type="email" [(ngModel)]="Employers.mail" class="form-control" formControlName="mail" id="mail" placeholder="Email">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Date de naissance</label>
+                                    <input type="date" [(ngModel)]="Employers.dateNaissance" class="form-control" formControlName="dateNaissance" id="dateNaissance" placeholder="Date de naissance">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Date d'embauche</label>
+                                    <input type="date" [(ngModel)]="Employers.dateEmbauche" class="form-control" formControlName="dateEmbauche" id="dateEmbauche" placeholder="date d'embauche">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Fonction</label>
+                                    <input type="text" [(ngModel)]="Employers.fonction" class="form-control" formControlName="fonction" id="dateEmbauche" placeholder="date d'embauche">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Horaire</label>
+                                    <input type="text" [(ngModel)]="Employers.horaire" class="form-control" formControlName="horaire" id="horaire" placeholder="horaire">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Contacte</label>
+                                    <input type="text" [(ngModel)]="Employers.contacte" class="form-control" formControlName="contacte" id="contacte" placeholder="+26">
+                                  </div>
+                                
+                                  </div>
+                                <button type="button" type="submit" class="button-58 ">Modifier</button>           
+                              </form>
+                              </div>
+                            <div class="modal-footer">                            </div>
+                          </div>
+                        </div>
+                      </div>             
+                     </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-work">
+                       
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Nom</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{Employers.nom}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Prénom</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{Employers.prenom}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Email</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{Employers.mail}}</p>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="showuserOnlyBoard" class="row">
+                                        <div  class="col-md-6">
+                                            <label >contacte</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p >{{Employers.contacte}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Poste</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{Employers.fonction}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Sexe</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{Employers.sexe}}</p>
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div  class="row">
+                                        <div class="col-md-6">
+                                            <label *ngIf="showuserOnlyBoard">Date de naissance</label>
+                                        </div>
+                                        <div  class="col-md-6">
+                                            <p *ngIf="showuserOnlyBoard">{{Employers.dateNaissance}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Departement</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{Employers.departement}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Date d'embauche</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{Employers.dateEmbauche}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Horaire</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{Employers.horaire}}</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>skype</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{Employers.skype}}</p>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>           
+    </div>
+

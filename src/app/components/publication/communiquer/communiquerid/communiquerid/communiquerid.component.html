@@ -1,0 +1,126 @@
+<p>communiquerid works!</p>
+
+<div class="row d-flex  justify-content-center">
+  <div class="col-md-6 shadow p-3 mb-5 bg-white rounded" >
+      <div class="card">
+          <div class="d-flex justify-content-between p-2 px-3">
+              <div class="d-flex flex-row align-items-center"> <img src="{{evenements.imageprofil}}" width="50" class="rounded-circle">
+                  <div class="d-flex flex-column ml-2"> <span class="font-weight-bold"> {{evenements.nomEmployer}} {{evenements.prenomEmployer}}</span> <small class="text-primary"></small> </div>
+              </div>
+              <div class="d-flex flex-row mt-1 ellipsis">
+                   <small class="mr-2">{{evenements.dateEven | date:'medium'}}</small> 
+                   <div class="dropdown no-arrow">
+                      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                          aria-labelledby="dropdownMenuLink">
+                          <div class="dropdown-header">parametre</div>
+                          <a class="dropdown-item" routerLink="/sidebar/updateEvent/{{evenements.idEvent}}">Modifier</a>
+                          <a class="dropdown-item" type="button"data-toggle="modal" data-target="#exampleModal" (click)="getEvents(evenements.idEvent)">Supprimer</a>
+                          <!--<div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Something else here</a>-->
+                      </div>
+                  </div>
+                  </div>
+          </div>
+          <p class="mx-2 mr-2 mb-2 text-justify">
+              {{evenements.event}}
+          </p>
+          <div class="content-image">
+              <img *ngFor="let image of imgPb" src="{{image.imagePubid}}" class="img-fluid">
+         </div>
+        
+          </div>
+      </div>
+  </div>
+
+   
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Voulez vous vraiment supprimer cette evenement  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="deleteEvent(evenements.idEvent)">Supprimer</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Suppression</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Voulez vous vraiment supprimer ce commentaire?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="deleteComm(comments.idCo)" >Supprimer</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+
+
+    <div class="modal fade right" id="modalAbandonedCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+      <!--Content-->
+      <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header">
+          <p class="heading">Modification commentaire
+          </p>
+  
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="white-text">&times;</span>
+          </button>
+        </div>
+  
+        <!--Body-->
+        <div class="modal-body">
+  
+          <div class="row">
+                <form [formGroup]="this.UpdatComsFomr" (ngSubmit)="Submita()">
+                    <div class="mb-3">
+                      <label for="message-text" class="col-form-label">Commentaire</label>
+                      <textarea class="form-control" [(ngModel)]="comments.comment" formControlName="commentaire" id="message-text"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-info">Modifier</button>
+                  </form>
+            <div class="col-9">
+              
+            </div>
+          </div>
+        </div>
+  
+        <!--Footer-->
+        <div class="modal-footer justify-content-center">
+          <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Annuler</a>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+  <!-- Modal: modalAbandonedCart-->
+  

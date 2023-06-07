@@ -1,0 +1,113 @@
+.lib {
+    min-height: 100vh;
+    background-color: #b0e7f0;
+    background: linear-gradient(to bottom, rgba(64, 140, 228, 0.8) 0%, rgba(102, 189, 216, 0.8) 100%),url('src/assets/ImgV/dev.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+/* CSS */
+.button-58 {
+  align-items: center;
+  background-color: rgba(7, 102, 244, 0.936);
+  border: 2px solid rgb(1, 94, 235);
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: Inter,sans-serif;
+  font-size: 15px;
+  font-weight: 550;
+  height: 45px;
+  justify-content: center;
+  letter-spacing: -.8px;
+  line-height: 24px;
+  min-width: 100px;
+  outline: 0;
+  padding: 0 17px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-58:focus {
+  color: #171e29;
+}
+
+.button-58:hover {
+  background-color: #3385ff;
+  border-color: #3385ff;
+  fill: #06f;
+}
+
+.button-58:active {
+  background-color: #3385ff;
+  border-color: #3385ff;
+  fill: #06f;
+}
+
+@media (min-width: 768px) {
+  .button-58 {
+    min-width: 170px;
+  }
+}
+
+.space {
+    width: 4px;
+    height: auto;
+    display: inline-block;
+  }
+.button-57 {
+    align-items: center;
+    background-color: rgba(245, 6, 6, 0.959);
+    border: 2px solid rgb(245, 6, 6);
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    fill: #000;
+    font-family: Inter,sans-serif;
+    font-size: 15px;
+    font-weight: 550;
+    height: 45px;
+    justify-content: center;
+    letter-spacing: -.8px;
+    line-height: 24px;
+    min-width: 140px;
+    outline: 0;
+    padding: 0 17px;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-57:focus {
+    color: #171e29;
+  }
+  
+  .button-57:hover {
+    background-color: #fc2c2c;
+    border-color: #ff3341;
+    fill: rgb(255, 0, 0);
+  }
+  
+  .button-57:active {
+    background-color: #ff3333;
+    border-color: #ff3333;
+    fill: rgb(255, 0, 0);
+  }
+  
+  @media (min-width: 768px) {
+    .button-57 {
+      min-width: 150px;
+    }
+  }

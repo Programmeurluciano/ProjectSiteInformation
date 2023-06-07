@@ -1,0 +1,86 @@
+
+
+<div class="lib">
+    <h1 class="h3 mb-2 text-gray-800">Liste des employées</h1>
+    <p class="mb-4"> <a target="_blank"
+            href="https://datatables.net"></a>.</p>
+  
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="w-25 p-3 input-group mb-3">
+                <input type="text" class="form-control bg-light border-0 small" [(ngModel)]="searchText" placeholder="Recherche..."
+                aria-label="Search" aria-describedby="basic-addon2">
+                
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+            <div class="table-responsive">
+                <table  class="table" id="dataTable" width="100%" cellspacing="0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Profil</th>
+                            <th>Nom et prénom</th>
+                            <th>Matricule</th>
+                            <th>Email</th>
+                            <th>Poste</th>
+                            <th>skype</th>
+                            <th>date d'embauche</th>
+                            <th>departement</th>
+                            <th *ngIf="showAdminBoard">Action</th>
+                        </tr>
+                    </thead>
+                    <tfoot></tfoot>
+                    <tbody >
+                        <tr *ngFor="let employer of pageOfItems | searchFilter: searchText">
+                            <td><a href="{{employer.image}}"> <img  width="100" class="rounded-circle"  src="{{employer.image}}"
+                                alt="..."></a></td>
+                            <td><a routerLink="/sidebar/profil/{{employer.matricule}}">{{employer.nom}} {{employer.prenom}}</a></td>
+                            <td>{{employer.matricule}}</td>
+                            <td>{{employer.mail}}</td>
+                            <td>{{employer.fonction}}</td>
+                            <td>{{employer.skype}}</td>
+                            <td>{{employer.dateEmbauche}}</td>
+                            <td>{{employer.departement}}</td>
+                            <td *ngIf="showAdminBoard">
+        <!-- Button trigger modal-->
+<!-- Button trigger modal -->
+<button type="button" class="button-57" data-toggle="modal" (click)="getEmployer(employer.matricule)" data-target="#exampleModalCenter">
+    Supprimer
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Suppression</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         Voulez vous vraiment supprimer {{Employers.prenom}}?
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger" (click)="deleteEmployer(Employers.matricule)">Confirmer</button>
+          <button type="button" class="btn btn-secondary"  data-dismiss="modal">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+                <nav aria-label="Page navigation example">
+                    <jw-pagination [items]="employe" (changePage)="onChangePage($event)"></jw-pagination>
+                  </nav>
+            </div>
+        </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,12 @@
+.lib {
+    min-height: 100vh;
+    background-color: #ffffffde;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 248, 248, 0.8) 100%);
+}
+.py-5{ 
+    position: relative;
+    bottom: -150px;}
+
+#header {
+        background:linear-gradient(to bottom, rgba(27, 113, 211, 0.8) 0%, rgba(1, 160, 208, 0.8) 100%), url(src/assets/ImgV/valia.jpg) center center / cover no-repeat ;
+      }

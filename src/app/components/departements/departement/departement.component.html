@@ -1,0 +1,122 @@
+
+  <h1 class="h3 mb-2 text-gray-800">Liste des Departements</h1>
+  <p class="mb-4"> <a target="_blank"
+          href="https://datatables.net"></a>.</p>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+      <div class="card-body">
+        <div class="w-25 p-3 input-group mb-3">
+          <input type="text" class="form-control bg-light border-0 small" [(ngModel)]="searchText" placeholder="Recherche..."
+          aria-label="Search" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+          <button class="btn btn-primary" type="button">
+              <i class="fas fa-search fa-sm"></i>
+          </button>
+      </div>
+  </div>
+          <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead >
+                      <tr >
+                          <th>Nom departement</th>
+                          <th>Date de création</th>
+                          <th>horaire</th>
+                          <th  *ngIf="showAdminBoard">Action</th>
+                      </tr>
+                  </thead>
+                  <tbody >
+                      <tr *ngFor="let departemt of  pageOfItems | searchFilter: searchText">
+                          <td><a routerLink="/sidebar/detailDepartement/{{departemt.idDe}}">{{ departemt.nomDepartement }}</a></td>
+                          <td>{{ departemt.dateCreation }}</td>
+                          <td>{{ departemt.horairedept }}</td>
+                          <td *ngIf="showAdminBoard"> 
+        <!-- Button trigger modal-->
+<button type="button" class="button-57" data-toggle="modal" data-target="#modalConfirmDelete" (click)="updateData(departemt.idDe)">Supprimer</button>
+<!--Modal: modalConfirmDelete-->
+<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+      <!--Header-->
+      <div class="modal-header d-flex justify-content-center">
+        <p class="heading">voulez vous vraiment supprimer {{departements.nomDepartement}}?</p>
+      </div>
+
+      <!--Body-->
+
+      <!--Footer-->
+      <div class="modal-footer flex-center">
+        <a type="submit" (click)="deleteDepartement(departements.idDe)" class="btn  btn-outline-danger">Confirmer</a>
+        <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">Annuler</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: modalConfirmDelete-->
+<div class="space">
+</div>
+                            <!-- Button trigger modal -->
+<button type="button" class="button-58"  (click)="updateData(departemt.idDe)"  data-toggle="modal" data-target="#exampleModalCenter">
+  Modifier
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modifier 
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="this.updateDepartForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Nom Departement</label>
+                    <input type="text" [(ngModel)]="departements.nomDepartement" formControlName="nomDepartement" class="form-control"  placeholder="Departement">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4">Date de création</label>
+                    <input type="date" [(ngModel)]="departements.dateCreation" formControlName="dateCreation" class="form-control"  placeholder="Date">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="inputCity">Horaire departement</label>
+                    <input type="text" [(ngModel)]="departements.horairedept" formControlName="horairedept"  class="form-control" placeholder="horaire">
+                  </div>
+                  <div class="form-group col-md-2">
+                   
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Activité</label>
+          <textarea   class="form-control" [(ngModel)]="departements.activite" formControlName="activite" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Modifier</button>
+              </form>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+                          </td>
+                      </tr>
+                      
+                  </tbody>
+              </table>
+              <nav aria-label="Page navigation example">
+                <jw-pagination [items]="departmnt" (changePage)="onChangePage($event)"></jw-pagination>
+              </nav>
+          </div>
+      </div>
+  </div>

@@ -1,0 +1,9 @@
+.lib {
+    background-color: #31c0d6;
+    background: linear-gradient(to bottom, rgba(64, 140, 228, 0.8) 0%, rgba(103, 219, 255, 0.8) 100%),url('src/assets/ImgV/val3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+

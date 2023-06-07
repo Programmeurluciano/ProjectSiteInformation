@@ -1,0 +1,71 @@
+
+
+<div *ngIf="div1" class="col d-flex justify-content-center">
+  <!-- Basic Card Example -->
+  <div class="card shadow w-75">
+    <div class="card-header text-center py-3">
+      <h5 class="m-0 font-weight-bold text-primary">Nouveau événement</h5>
+  </div>
+      <div class="card-body">
+        <form [formGroup]="this.AjouEventForm" (ngSubmit)="onSubmit()">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+            </div>
+            <div class="form-group col-md-6">
+             
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">événement</label>
+    <textarea class="form-control" formControlName="event" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <div style="text-align:center">
+                <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+                <div>
+                <img *ngFor='let preview of previews' [src]="preview" class="preview border border-dark mx-3" height="200px" width="200px">
+              </div>
+                <p>
+                  <input type="file" accept="image/*" multiple (change)="selectFile($event)">
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center my-8">
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </div>
+        </form>
+      </div>
+  </div>
+</div>
+<br>
+<div *ngIf="div1" class="col d-flex justify-content-center">
+  <button type="button" (click)="div1Fonction()" class="btn btn-success">événement sans image</button>
+</div>
+
+
+<div  *ngIf="div2" class="col d-flex justify-content-center">
+  <div class="card shadow w-75">
+    <div class="card-header text-center py-3">
+      <h5 class="m-0 font-weight-bold text-primary">Nouveau événement</h5>
+  </div>
+      <div class="card-body">
+        
+        <form [formGroup]="this.AjouEventFormNorm"  (ngSubmit)="onSubmitB()">
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">événement</label>
+          <textarea class="form-control" formControlName="event" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div class="d-flex justify-content-center my-8">
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </div>
+    </form>
+
+      </div>
+  </div>
+</div>
+<br>
+<div  *ngIf="div2" class="col d-flex justify-content-center">
+  <button type="button" (click)="div2Fonction()" class="btn btn-success">événement avec image</button>
+</div>

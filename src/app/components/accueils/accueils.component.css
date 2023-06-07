@@ -1,0 +1,61 @@
+.lib {
+    min-height: 150vh;
+    background-color: #f4f9fa;
+    background-image: linear-gradient(135deg, #081354 0%, #1fbdd8 100%);
+}
+header.masthead {
+    padding-top: 25rem;
+    padding-bottom: calc(10rem - 4.5rem);
+    background: linear-gradient(to bottom, rgba(27, 113, 211, 0.8) 0%, rgba(1, 160, 208, 0.8) 100%),url('src/assets/ImgV/valia.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+  }
+.move{
+    animation: moveitup 1.2s linear 1;
+}
+
+@keyframes moveitup {
+    0%{
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+.line{
+    height:0px;
+  width:30px;
+  border-bottom:3px solid rgb(238, 229, 229);
+  -webkit-animation: increase 3s;
+  -moz-animation:    increase 3s; 
+  -o-animation:      increase 3s; 
+  animation:         increase 3s; 
+  animation-fill-mode: forwards;
+}
+@keyframes increase {
+    100%{
+        width: 200px;
+    }
+}
+
+.upmove{
+    animation: moveinup 0.9s linear 1;
+}
+@keyframes moveinup {
+  0%{
+      transform: translateY(100%);
+      opacity: 0;
+  }  
+  100%{
+      transform: translateX(0%);
+      opacity: 1;
+  }
+}
+.upmoveB{
+    animation: moveinup 1s linear 1;
+}

@@ -1,0 +1,32 @@
+export class Employers {
+    file?:File;
+    nom?:String;
+    prenom?:String;
+    sexe?:String;
+    dateNaissance?:Date;
+    departement?:any;
+    fonction?:String;
+    dateEmbauche?:Date;
+    hoiraire?:String;
+    skype?:String;
+    mail?:String;
+    contacte?:String;
+    matricule?:String;
+
+   constructor(file:File,nom:String,prenom:String,sexe:String,dateNaissance:Date,departement:any,fonction:String
+    ,dateEmbauche:Date,hoiraire:String,skype:String,mail:String,contacte:String,matricule:String){
+        this.file=file;
+        this.nom=nom;
+        this.prenom=prenom;
+        this.sexe=sexe;
+        this.dateNaissance=dateNaissance;
+        this.departement=departement;
+        this.fonction=fonction;
+        this.dateEmbauche=dateEmbauche;
+        this.hoiraire=hoiraire;
+        this.skype=skype;
+        this.mail=mail;
+        this.contacte;
+        this.matricule;
+    }
+}

@@ -1,0 +1,77 @@
+<p>update-event works!</p>
+
+
+<div *ngIf="div1" class="col d-flex justify-content-center">
+    <!-- Basic Card Example -->
+    <div class="card shadow w-75">
+      <div class="card-header text-center py-3">
+        <h5 class="m-0 font-weight-bold text-primary">Nouveau evenement</h5>
+    </div>
+        <div class="card-body">
+          <form [formGroup]="this.updateEvent"(ngSubmit)="onSubmit()">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+              </div>
+              <div class="form-group col-md-6">
+               
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1"></label>
+      <textarea class="form-control"ngModel value="{{evenements?.event}}" formControlName="event" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <div class="form-check">
+                <div style="text-align:center">
+                  <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+                  <div>
+                    <img *ngFor='let preview of previews' [src]="preview" class="preview border border-dark mx-3" height="200px" width="200px">
+                    <div *ngIf="!preview">
+                    <img *ngFor="let image of imgPb" src="{{image.imagePubid}}" class="img-fluid" height="200px" width="200px">
+                    </div>
+                    
+                </div>
+                  <p>
+                    <input type="file" accept="image/*" multiple (change)="selectFile($event)">
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center my-8">
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+          </div>
+          </form>
+        </div>
+    </div>
+  </div>
+  <br>
+  <div *ngIf="div1" class="col d-flex justify-content-center">
+    <button type="button" (click)="div1Fonction()" class="btn btn-success">Evenement sans photo</button>
+  </div>
+  
+  
+  <div  *ngIf="div2" class="col d-flex justify-content-center">
+    <div class="card shadow w-75">
+      <div class="card-header text-center py-3">
+        <h5 class="m-0 font-weight-bold text-primary">Nouveau evenement</h5>
+    </div>
+        <div class="card-body">
+          
+          <form [formGroup]="this.updateEventNorm" (ngSubmit)="onSubmitB()">
+            <div class="form-group" >
+              <label for="exampleFormControlTextarea1"></label>
+            <textarea type="text" class="form-control" ngModel value="{{evenements?.event}}"  formControlName="event" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="d-flex justify-content-center my-8">
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+          </div>
+      </form>
+  
+        </div>
+    </div>
+  </div>
+  <br>
+  <div  *ngIf="div2" class="col d-flex justify-content-center">
+    <button type="button" (click)="div2Fonction()" class="btn btn-success">Evenement avec image</button>
+  </div>
+  

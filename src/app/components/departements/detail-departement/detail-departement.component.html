@@ -1,0 +1,237 @@
+    
+
+<div class="row">
+<div class="col-md-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+   
+   <h5 class="card-title">{{departements.nomDepartement}}</h5>
+   <p> Date création:{{departements.dateCreation | date: 'longDate'}}</p>
+   Activité:
+   <p>{{departements.activite}}</p>
+   <p>Horaire:{{departements.horairedept}}</p>
+            
+        </div>
+    </div>
+</div>
+<div class=" col-md-6 mb-4">
+    <div id="DeptName" class="card shadow h-100 py-2">
+      <h1>{{departements.nomDepartement}}</h1>
+    </div>
+</div>
+</div>
+ 
+   <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="w-25 p-3 input-group mb-3">
+        <input type="text" class="form-control bg-light border-0 small" [(ngModel)]="searchText" placeholder="Recherche..."
+        aria-label="Search" aria-describedby="basic-addon2">
+   
+     <div *ngIf="showLeaderADminBoard" class="col-md-6">
+      <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+        Ajouter employer 
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div  class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Nouveau Membre</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="this.EmployerForm" (ngSubmit)="onSubmit()" >
+                <div class="row">
+                <div class="col-md-4">
+                  <div class="profile-img">
+                    <img src='/assets/ImgV/PngItem_1051661.png' *ngIf="!imgURL" alt=""/>
+                      <img [src]="imgURL" height="200" *ngIf="imgURL" alt=""/>
+                      <div class="file btn btn-lg btn-primary">
+                          Change Photo
+                          <input type="file" name="file" accept="image/*" (change)="onSelectFile($event)"/>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputAddress">Nom</label>
+                  <input type="text" class="form-control"formControlName="nom" id="nom" placeholder="Nom">
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress2">Prénom</label>
+                  <input type="text" class="form-control" formControlName="prenom" id="prenom" placeholder="Prénom">
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" formControlName="sexe" id="sexe" value="Homme">
+                    <label class="form-check-label" for="inlineRadio1">Homme</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" formControlName="sexe" id="sexe" value="Femme">
+                    <label class="form-check-label" for="inlineRadio2">Femme</label>
+                  </div>
+                  </div>
+               </div>
+              </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Skype</label>
+                    <input type="email" class="form-control"formControlName="skype" id="skype" placeholder="Skype">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" formControlName="mail" id="mail" placeholder="Email">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Date de naissance</label>
+                    <input type="date" class="form-control" formControlName="dateNaissance" id="dateNaissance" placeholder="Date de naissance">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Date d'embauche</label>
+                    <input type="date" class="form-control" formControlName="dateEmbauche" id="dateEmbauche" placeholder="date d'embauche">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Horaire</label>
+                    <input type="email" class="form-control" formControlName="horaire" id="horaire" placeholder="horaire">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4">Contacte</label>
+                    <input type="text" class="form-control" formControlName="contacte" id="contacte" placeholder="+26">
+                  </div>
+                
+                  </div>
+                
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputCity">Fonction</label>
+                    <input type="text" class="form-control" formControlName="fonction" id="fonction" placeholder="Poste">
+                  </div>
+                </div>             
+              </form>
+              
+              <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                <div  class="form-group col-md-6">
+                  <label for="inputPassword4">Role</label>
+                  <select formControlName="roles" id="role" class="form-select" aria-label="Default select example">
+                  <option  [value]="null">Role</option>
+                  <option *ngFor="let role of roles; let i = index"  [value]="roles[i].name">{{roles[i].name}}</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Mot de passe</label>
+                  <input type="password" class="form-control"type="password" class="form-control" id="password"
+                  formControlName="password" placeholder="Mot de passe">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Matricule</label>
+                  <input type="text" class="form-control" id="userName"
+                  formControlName="userName" placeholder="matricule">
+                </div>
+               <div class="text-center"><button type="submit"  class="btn btn-color px-5 mb-5 w-100">Ajouter</button></div>
+              </form>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermé</button>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+</div>
+        <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Matricule</th>
+                <th scope="col">Nom</th>
+                <th scope="col">prénom</th>
+                <th scope="col">Email</th>
+                <th scope="col">Fonction</th>
+                <th scope="col">Date d'embauche</th>
+                <th scope="col" *ngIf="showLeaderADminBoard">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let emp of  pageOfItems | searchFilter: searchText">
+                <th scope="row"><img class="imga" src="{{emp.image}}" alt=""></th>
+                <td>{{emp.matricule}}</td>
+                <td>{{emp.nom}}</td>
+                <td><a routerLink="/sidebar/profil/{{emp.matricule}}">{{emp.prenom}}</a></td>
+                <td>{{emp.mail}}</td>
+                <td>{{emp.fonction}}</td>
+                <td>{{emp.dateEmbauche}}</td>
+                <td *ngIf="showLeaderADminBoard">
+                  <button type="button" class="button-57"  (click)="getEmployer(emp.matricule)" data-toggle="modal" data-target="#exampleModalCenter">
+                    Supprimer
+                  </button>
+                  <div class="space"></div>
+                  <button type="button" class="button-58" (click)="getEmployer(emp.matricule)" data-toggle="modal" data-target="#exampleModalCentere">
+                    Transfer employer
+                  </button>
+                </td>
+               
+              </tr>
+            </tbody>
+          </table>
+          <nav aria-label="Page navigation example">
+            <jw-pagination [items]="employe" (changePage)="onChangePage($event)"></jw-pagination>
+          </nav>
+    </div>
+   <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Suppression employer</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         voulez vous vraiment supprimer {{employers.matricule}}?
+        </div>
+        <div class="modal-footer">
+          <button type="submitte" class="btn btn-danger" (click)="deleteEmployer(employers.matricule)">Confirmer</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModalCentere" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Transfer Employer  
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="this.TransferFomr" (ngSubmit)="submiton()">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    Transferer l'employer avec le matricule  {{employers.matricule}}
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputState">Sélection de département</label>
+                    <select formControlName="d" id="d"  class="form-select" aria-label="Default select example">
+                      <option  [value]=null>Departement</option>
+                      <option *ngFor="let departement of departmnt" [ngValue]="departement.idDe">{{departement.nomDepartement}}</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit"  class="btn btn-primary">Transferer</button>
+              </form>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        
+        </div>
+      </div>
+    </div>
+  </div>

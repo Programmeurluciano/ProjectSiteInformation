@@ -1,0 +1,109 @@
+<div class="col d-flex justify-content-center">
+
+  <!-- Basic Card Example -->
+  <div class="card shadow w-75">
+     
+      <div class="card-body">
+        
+        <form [formGroup]="this.EmployerForm" (ngSubmit)="onSubmit()" >
+          <div class="row">
+          <div class="col-md-4">
+            <div class="profile-img">
+              <img src='/assets/ImgV/PngItem_1051661.png' *ngIf="!imgURL" alt=""/>
+                <img [src]="imgURL" height="200" *ngIf="imgURL" alt=""/>
+                <div class="file btn btn-lg btn-primary">
+                    Change Photo
+                    <input type="file" name="file" accept="image/*" (change)="onSelectFile($event)"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="inputAddress">Nom</label>
+            <input type="text" class="form-control"formControlName="nom" id="nom" placeholder="Nom">
+          </div>
+          <div class="form-group">
+            <label for="inputAddress2">Prénom</label>
+            <input type="text" class="form-control" formControlName="prenom" id="prenom" placeholder="Prénom">
+          </div>
+          <div class="form-group">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" formControlName="sexe" id="sexe" value="Homme">
+              <label class="form-check-label" for="inlineRadio1">Homme</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" formControlName="sexe" id="sexe" value="Femme">
+              <label class="form-check-label" for="inlineRadio2">Femme</label>
+            </div>
+            </div>
+         </div>
+        </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Skype</label>
+              <input type="email" class="form-control"formControlName="skype" id="skype" placeholder="Skype">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Email</label>
+              <input type="email" class="form-control" formControlName="mail" id="mail" placeholder="Email">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Date de naissance</label>
+              <input type="date" class="form-control" formControlName="dateNaissance" id="dateNaissance" placeholder="Date de naissance">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Date d'embauche</label>
+              <input type="date" class="form-control" formControlName="dateEmbauche" id="dateEmbauche" placeholder="date d'embauche">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Horaire</label>
+              <input type="email" class="form-control" formControlName="horaire" id="horaire" placeholder="horaire">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Contacte</label>
+              <input type="text" class="form-control" formControlName="contacte" id="contacte" placeholder="+26">
+            </div>
+          
+            </div>
+          
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCity">Fonction</label>
+              <input type="text" class="form-control" formControlName="fonction" id="fonction" placeholder="Poste">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputState">Departement</label>
+              <select formControlName="departement" id="departement"  class="form-select" aria-label="Default select example">
+                <option  [value]=null>Departement</option>
+                <option *ngFor="let departement of departmnt" [ngValue]="departement.idDe">{{departement.nomDepartement}}</option>
+              </select>
+            </div>
+          </div>             
+        </form>
+        
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <div  class="form-group col-md-6">
+            <label for="inputPassword4">Role</label>
+            <select formControlName="roles" id="roles" class="form-select" aria-label="Default select example">
+              <option  [value]=null>Role</option>
+            <option *ngFor="let role of roles; let i = index"  [value]="roles[i].name">{{rolex[i].name}}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Mot de passe</label>
+            <input type="password" class="form-control"type="password" class="form-control" id="password"
+            formControlName="password" placeholder="Mot de passe">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Matricule</label>
+            <input type="text" class="form-control" id="userName"
+            formControlName="userName" placeholder="matricule">
+          </div>
+          <div class="text-center"><button type="submit"  class="btn btn-color px-5 mb-5 w-100">Ajouter</button></div>
+        </form>
+      </div>
+     
+ 
+  </div>
+
+</div>

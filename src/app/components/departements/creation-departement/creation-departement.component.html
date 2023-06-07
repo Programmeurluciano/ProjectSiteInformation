@@ -1,0 +1,53 @@
+<div class="col d-flex justify-content-center">
+
+  <!-- Basic Card Example -->
+  <div class="card shadow w-75">
+    <div class="card-header py-3 text-center">
+      <h5 class="m-0 font-weight-bold text-primary">Nouveau Département</h5>
+  </div>
+      <div class="card-body">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Nom département</label>
+              <input required [(ngModel)]="departement.nomDepartement" type="text" class="form-control" id="inputEmail4" placeholder="Departement">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Date de création</label>
+              <input required [(ngModel)]="departement.dateCreation" type="date" class="form-control" id="inputPassword4" placeholder="Date">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="inputCity">Horaire département</label>
+              <input  required [(ngModel)]="departement.horairedept" type="email" class="form-control" id="inputEmail4" placeholder="horaire">
+            </div>
+            <div class="form-group col-md-2">
+             
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Activité</label>
+    <textarea  required [(ngModel)]="departement.activite" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+           <!--- <label for="inputAddress2">Heure sortie</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+           --></div>
+          
+          <div class="form-group">
+            <div class="form-check">
+              <!--<input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                Check me out
+              </label>-->
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+          <button (click)="saveDepartement()" type="submit" class="button-58">Ajouter</button>
+        </div>
+        </form>
+      </div>
+  </div>
+
+</div>
